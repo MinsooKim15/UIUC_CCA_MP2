@@ -1,5 +1,8 @@
 from flask import Flask, request
 from flask_caching import Cache
+import json
+import logging
+logging.basicConfig(filename = "logs/project.log", level = logging.DEBUG)
 app = Flask(__name__)
 config = {
     "DEBUG": True,          # some Flask specific configs
@@ -22,11 +25,13 @@ def get():
 @app.route('/', methods= ["POST"])
 def post():
     params = request.get_json()
+    print(params)
+    params = json.loads(str(params))
     try:
         cache.set("seed", int(params["num"]))
-        return "succeed"
+        return str("succeed")
     except ValueError:
-        return "Failed"
+        return str("Failed")
 
 
 if __name__ == "__main__":
