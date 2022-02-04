@@ -1,8 +1,7 @@
 from flask import Flask, request
 from flask_caching import Cache
 import json
-import logging
-logging.basicConfig(filename = "logs/project.log", level = logging.DEBUG)
+
 app = Flask(__name__)
 config = {
     "DEBUG": True,          # some Flask specific configs
