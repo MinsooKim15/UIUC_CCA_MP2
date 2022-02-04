@@ -24,8 +24,8 @@ def get():
 @app.route('/', methods= ["POST"])
 def post():
     params = request.get_json()
-    print(params)
-    params = json.loads(str(params))
+    # print(params)
+    # params = json.loads(str(params))
     try:
         cache.set("seed", int(params["num"]))
         return str("succeed")
